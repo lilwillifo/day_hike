@@ -27,5 +27,12 @@ describe Trip, type: :model do
 
       expect(trip.longest_distance).to eq(11)
     end
+    it '.shortest_distance' do
+      trip = Trip.create(name: 'Fun trip')
+      trail_1 = trip.trails.create(name: 'Old Rag', address: 'Virginia', length: 9)
+      trail_2 = trip.trails.create(name: 'Mt Elbert', address: 'Colorado', length: 11)
+
+      expect(trip.shortest_distance).to eq(9)
+    end
   end
 end

@@ -13,4 +13,8 @@ class Trip < ApplicationRecord
   def longest_distance
     trails.order(:length).last.length
   end
+
+  def shortest_distance
+    trails.order(:length).first.length
+  end
 end
