@@ -19,14 +19,15 @@ describe 'As a visitor' do
     end
   end
   context 'when I visit a trip show' do
-    it 'I see the planned total hiking distance' do
+    it 'I see the hiking distance stats' do
       trip = Trip.create(name: 'Fun trip')
       trail_1 = trip.trails.create(name: 'Old Rag', address: 'Virginia', length: 9)
       trail_2 = trip.trails.create(name: 'Mt Elbert', address: 'Colorado', length: 11)
 
       visit trip_path(trip)
 
-      expect(page).to have_content ('Total Hiking Distance: 20 miles.')
+      expect(page).to have_content ("Total Hiking Distance: #{trip.total_distance} miles.")
+      expect(page).to have_content ("Average Hiking Distance: #{trip.average_distance} miles.")
     end
   end
 end
