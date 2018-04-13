@@ -21,5 +21,14 @@ describe 'As a user' do
       expect(page).to have_content(trail.address)
       expect(page).to have_content(trail.length)
     end
+    it 'I see the total number of trips this hike has been included in' do
+      trail = Trail.create(name: 'Mt Elbert', address: 'Colorado', length: 11)
+      trip_1 = trail.trips.create(name: 'v fun adventure')
+      trip_2 = trail.trips.create(name: 'v v fun adventure')
+
+      visit trail_path(trail)
+
+      expect(page).to have_content("This hike is included on #{trail.trip_count} trips!")
+    end
   end
 end
