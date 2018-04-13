@@ -28,6 +28,7 @@ describe 'As a visitor' do
 
       expect(page).to have_content ("Total Hiking Distance: #{trip.total_distance} miles.")
       expect(page).to have_content ("Average Hiking Distance: #{trip.average_distance} miles.")
+      expect(page).to have_content ("Longest Hiking Distance: #{trip.longest_distance} miles.")
     end
   end
 end
